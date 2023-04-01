@@ -1,5 +1,7 @@
 import "./App.css";
 import logo from "../src/Images/logo.jpg";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faBookmark} from '@fortawesome/free-solid-svg-icons'
 import { useEffect, useState } from "react";
 
 function App() {
@@ -37,7 +39,7 @@ function LoadCardData() {
 
   return (
     <div>
-      <div>
+      <div className="knowledge-container">
           <div>
              {
               cardInfos.map(cardInfo=> <CardInfo 
@@ -66,8 +68,10 @@ function CardInfo (props){
                         <h6 className="card-subinfo-titile1">{authorname}</h6>
                         <h5 className="card-subinfo-titile2">{Publish_Date}</h5> 
                     </div>
+                  <h1 className="read-time">{read_time} min read <FontAwesomeIcon icon={faBookmark} /></h1>
              </div>
              <p className="blog-title">{blog_title} stars</p>
+             <a className="mark-as-read" href="/mark as read">Mark as read</a>
         </div>
       </div>
   );

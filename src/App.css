@@ -68,7 +68,7 @@
 
 .card-detail{
   width: 678px;
-  height: 596px;
+  height: 612px;
   border: 1px solid #95A0A7;
   border-radius: 8px;
   margin-left: 50px;
@@ -114,4 +114,19 @@
   font-size: 27px;
   color: #111111;
   margin-left: 20px;
+}
+
+.read-time{
+  margin-left: 183px;
+  color: rgba(17, 17, 17, 0.6);
+}
+
+.knowledge-container{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.mark-as-read{
+  margin-left: 21px;
 }
