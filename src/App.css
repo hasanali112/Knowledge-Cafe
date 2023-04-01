@@ -41,6 +41,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 40px;
 }
 
 .nav-tittle{
@@ -60,9 +61,22 @@
 
 
 .nav-info img{
-  width: 15%;
+    width: 15%;
     height: 138%;
     border-radius: 355px;
     position: absolute;
     top: -3px;
+}
+
+.card-detail{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.card-component{
+  width: 678px;
+  height: 510px;
+  border: 1px solid #95A0A7;
+  border-radius: 8px;
+  margin-left: 50px;
 }
