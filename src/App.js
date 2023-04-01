@@ -31,10 +31,17 @@ function Navbar() {
 function LoadCardData() {
   const [cardInfos, setCardInfos]= useState([])
   const [watchTime, setWatchTime]=useState(0)
+  const[bookMarked, setBookMarked]=useState([])
   const handleReadtime=(time)=>{
     const newTime= watchTime + time;
     setWatchTime(newTime);
   }
+
+  const handleBookMarked= (marked) =>{
+     const newBookMarked= [...bookMarked, marked]
+     setBookMarked(newBookMarked);
+  }
+
 
   useEffect(()=>{
     fetch('data.json')
@@ -50,6 +57,7 @@ function LoadCardData() {
               cardInfos.map(cardInfo=> <CardDetailInfo
               cardInfo={cardInfo}
               handleReadtime={handleReadtime}
+              handleBookMarked={handleBookMarked}
               key={cardInfo.id}
               >  
               </CardDetailInfo>)
@@ -57,14 +65,19 @@ function LoadCardData() {
         </div>
       <div>
         <h1 className="watch-container">Spent time on read: {watchTime}</h1>
-        <h2>Bookmarked Blogs :</h2>
+        <h2 className="bookmarked">Bookmarked Blogs : {bookMarked.length}</h2>
+        <div className="bookmarked">
+          {
+            bookMarked.map(bookmarked=> <li>{bookmarked}</li>)
+          }
+        </div>
       </div>
     </div>
   </div>
   );
 }
 
-function CardDetailInfo ({cardInfo, handleReadtime}){
+function CardDetailInfo ({cardInfo, handleReadtime, handleBookMarked}){
   return (
       <div className='card-detail'>
         <div className="card-info">
@@ -75,7 +88,7 @@ function CardDetailInfo ({cardInfo, handleReadtime}){
                         <h6 className="card-subinfo-titile1">{cardInfo.authorname}</h6>
                         <h5 className="card-subinfo-titile2">{cardInfo.Publish_Date}</h5> 
                     </div>
-                  <h1  className="read-time">{cardInfo.read_time} min read <FontAwesomeIcon icon={faBookmark} /></h1>
+                  <h1  className="read-time">{cardInfo.read_time} min read <span onClick={()=>handleBookMarked(cardInfo.blog_title)}><FontAwesomeIcon  icon={faBookmark} /></span></h1>
              </div>
              <p className="blog-title">{cardInfo.blog_title}</p>
              <a onClick={()=>handleReadtime(cardInfo.read_time)} className="mark-as-read" href="/#">Mark as read</a>
