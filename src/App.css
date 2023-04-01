@@ -130,3 +130,11 @@
 .mark-as-read{
   margin-left: 21px;
 }
+
+.watch-container{
+  border: 2px solid gray;
+  border-radius: 5px;
+  background-color: antiquewhite;
+  padding: 5px;
+  margin-right: 10px;
+}
